@@ -4,7 +4,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace AppIdentity.Web.Models.Account
+namespace AppIdentity.Core.ViewModels.Account
 {
     public class LoginInputModel
     {

@@ -8,7 +8,7 @@ using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 using Newtonsoft.Json;
 
-namespace AppIdentity.Web.Models.Diagnostics
+namespace AppIdentity.Core.ViewModels.Diagnostics
 {
     public class DiagnosticsViewModel
     {

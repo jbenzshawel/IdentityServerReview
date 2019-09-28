@@ -4,7 +4,7 @@
 
 using System;
 
-namespace AppIdentity.Web.Models.Account
+namespace AppIdentity.Core.ViewModels.Account
 {
     public class AccountOptions
     {

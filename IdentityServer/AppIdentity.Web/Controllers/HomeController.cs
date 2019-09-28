@@ -3,7 +3,7 @@
 
 
 using System.Threading.Tasks;
-using AppIdentity.Web.IdentityServer;
+using AppIdentity.Core.IdentityServer;
 using AppIdentity.Web.Models.Home;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Authorization;

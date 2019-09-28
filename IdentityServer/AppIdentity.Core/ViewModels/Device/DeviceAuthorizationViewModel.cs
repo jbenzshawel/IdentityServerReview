@@ -2,12 +2,13 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using AppIdentity.Web.Models.Consent;
+using AppIdentity.Core.ViewModels.Consent;
 
-namespace AppIdentity.Web.Models.Device
+namespace AppIdentity.Core.ViewModels.Device
 {
-    public class DeviceAuthorizationInputModel : ConsentInputModel
+    public class DeviceAuthorizationViewModel : ConsentViewModel
     {
         public string UserCode { get; set; }
+        public bool ConfirmUserCode { get; set; }
     }
 }

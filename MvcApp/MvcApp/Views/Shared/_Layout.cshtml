@@ -19,7 +19,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <ul class="navbar-nav flex-grow-1 float-right">
+                        <ul class="navbar-nav float-right">
                             <li class="nav-item ">
                                 <span class="nav-link text-dark">
                                     @User.Claims.FirstOrDefault(x => x.Type == "name")?.Value

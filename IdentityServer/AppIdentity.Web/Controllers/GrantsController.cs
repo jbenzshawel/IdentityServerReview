@@ -5,8 +5,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AppIdentity.Web.IdentityServer;
-using AppIdentity.Web.Models.Grants;
+using AppIdentity.Core.IdentityServer;
+using AppIdentity.Core.ViewModels.Grants;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
 using IdentityServer4.Services;

@@ -1,11 +1,14 @@
 using System;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using AppIdentity.Core.Data;
 using AppIdentity.Core.Models;
-using AppIdentity.Web.IdentityServer;
+using AppIdentity.Core.Services.Implementations;
+using AppIdentity.Core.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -37,6 +40,24 @@ namespace AppIdentity.Web
             services.AddControllersWithViews();
             services.AddMvc();
 
+            ConfigureIdentityService(services);
+            ConfigureDI(services);
+        }
+
+        private void ConfigureDI(IServiceCollection services)
+        {
+            services.AddTransient<ClaimsPrincipal>(s =>
+                s.GetService<IHttpContextAccessor>().HttpContext.User);
+
+            services.AddTransient<HttpContext>(s =>
+                s.GetService<IHttpContextAccessor>().HttpContext);
+
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IAppConsentService, AppConsentService>();
+        }
+
+        private void ConfigureIdentityService(IServiceCollection services)
+        {
             var builder = services.AddIdentityServer(options =>
                 {
                     options.Events.RaiseErrorEvents = true;
@@ -47,7 +68,8 @@ namespace AppIdentity.Web
                 .AddInMemoryIdentityResources(IdentityServerConfig.GetIdentityResources())
                 .AddInMemoryApiResources(IdentityServerConfig.GetApis())
                 .AddInMemoryClients(IdentityServerConfig.GetClients())
-                .AddAspNetIdentity<ApplicationUser>();
+                .AddAspNetIdentity<ApplicationUser>()
+                .AddProfileService<IdentityProfileService>();
 
             if (Environment.IsDevelopment())
             {
@@ -57,7 +79,6 @@ namespace AppIdentity.Web
             {
                 throw new Exception("need to configure key material");
             }
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,10 +98,8 @@ namespace AppIdentity.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-
             app.UseAuthentication();
             app.UseAuthorization();
-
 
             app.UseIdentityServer();
 

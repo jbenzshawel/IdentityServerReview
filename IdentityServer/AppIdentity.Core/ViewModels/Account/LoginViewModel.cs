@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AppIdentity.Web.Models.Account
+namespace AppIdentity.Core.ViewModels.Account
 {
     public class LoginViewModel : LoginInputModel
     {

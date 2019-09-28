@@ -60,7 +60,7 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 65px;
 }
 .footer {
   position: absolute;
@@ -72,6 +72,10 @@ body {
 
 /* Default Identity Serer Styles
 -------------------------------------------*/
+.body-content {
+    margin-top: 25px
+}
+
 .navbar-header {
     position: relative;
     top: -4px;

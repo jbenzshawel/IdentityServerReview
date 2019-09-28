@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using IdentityServer4.Stores;
 
-namespace AppIdentity.Web.IdentityServer
+namespace AppIdentity.Core.IdentityServer
 {
     public static class Extensions
     {

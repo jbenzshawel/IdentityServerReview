@@ -4,8 +4,8 @@
 
 using System.Linq;
 using System.Threading.Tasks;
-using AppIdentity.Web.IdentityServer;
-using AppIdentity.Web.Models.Diagnostics;
+using AppIdentity.Core.IdentityServer;
+using AppIdentity.Core.ViewModels.Diagnostics;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

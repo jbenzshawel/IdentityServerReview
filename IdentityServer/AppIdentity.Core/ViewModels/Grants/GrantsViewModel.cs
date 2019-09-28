@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AppIdentity.Web.Models.Grants
+namespace AppIdentity.Core.ViewModels.Grants
 {
     public class GrantsViewModel
     {

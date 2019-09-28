@@ -1,16 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UserSecretsId>aspnet-AppIdentity.Web-48F1574E-9E10-4CB7-94CC-5D0DAFA50DAD</UserSecretsId>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="IdentityServer\Data\**" />
-    <Content Remove="IdentityServer\Data\**" />
-    <EmbeddedResource Remove="IdentityServer\Data\**" />
-    <None Remove="IdentityServer\Data\**" />
-  </ItemGroup>
 
 
   <ItemGroup>
