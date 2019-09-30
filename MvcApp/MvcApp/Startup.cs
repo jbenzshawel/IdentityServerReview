@@ -49,11 +49,14 @@ namespace MvcApp
                     options.ClientSecret = "secret";
                     options.ResponseType = "code id_token";
 
-                    options.SaveTokens = true;
+                    // enable the OpenID Connect handler to save tokens in the authentication cookie
+                    // HttpContext.GetTokenAsync("access_token") or HttpContext.GetTokenAsync("refresh_token")
+                    // can be used to read token values from the cookie 
+                    options.SaveTokens = true; 
                     options.GetClaimsFromUserInfoEndpoint = true;
 
                     options.Scope.Add("api1");
-                    
+                    options.Scope.Add("offline_access"); // this allows requesting refresh tokens for long lived API access
                     options.ClaimActions.MapJsonKey("website", "website");
                 });
         }

@@ -19,20 +19,17 @@ namespace AppIdentity.Core.Services.Implementations
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IClientStore _clientStore;
         private readonly ClaimsPrincipal _user;
-        private readonly HttpContext _httpContext;
 
         public AccountService(
             IIdentityServerInteractionService interaction, 
             IAuthenticationSchemeProvider schemeProvider, 
             IClientStore clientStore, 
-            ClaimsPrincipal user, 
-            HttpContext httpContext)
+            ClaimsPrincipal user)
         {
             _interaction = interaction;
             _schemeProvider = schemeProvider;
             _clientStore = clientStore;
             _user = user;
-            _httpContext = httpContext;
         }
 
         public async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl)
@@ -119,7 +116,9 @@ namespace AppIdentity.Core.Services.Implementations
             return vm;
         }
 
-        public async Task<LoggedOutViewModel> BuildLoggedOutViewModelAsync(string logoutId)
+        public async Task<LoggedOutViewModel> BuildLoggedOutViewModelAsync(
+            string logoutId,
+            HttpContext httpContext)
         {
             // get context information (client name, post logout redirect URI and iframe for federated signout)
             var logout = await _interaction.GetLogoutContextAsync(logoutId);
@@ -138,7 +137,7 @@ namespace AppIdentity.Core.Services.Implementations
                 var idp = _user.FindFirst(JwtClaimTypes.IdentityProvider)?.Value;
                 if (idp != null && idp != IdentityServer4.IdentityServerConstants.LocalIdentityProvider)
                 {
-                    var providerSupportsSignout = await _httpContext.GetSchemeSupportsSignOutAsync(idp);
+                    var providerSupportsSignout = await httpContext.GetSchemeSupportsSignOutAsync(idp);
                     if (providerSupportsSignout)
                     {
                         if (vm.LogoutId == null)

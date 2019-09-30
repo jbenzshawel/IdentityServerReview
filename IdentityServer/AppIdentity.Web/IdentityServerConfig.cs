@@ -49,7 +49,7 @@ namespace AppIdentity.Web
                         "api1"
                     },
 
-                    AllowOfflineAccess = false
+                    AllowOfflineAccess = true // this allows requesting refresh tokens for long lived API access
                 },
                 // TODO: Configure other clients here
                 // JavaScript Client

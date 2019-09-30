@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace AppIdentity.Web
 {
@@ -77,6 +78,8 @@ namespace AppIdentity.Web
             }
             else
             {
+                //TODO: Configure key signing credentials 
+                // http://docs.identityserver.io/en/latest/topics/startup.html#key-material
                 throw new Exception("need to configure key material");
             }
         }

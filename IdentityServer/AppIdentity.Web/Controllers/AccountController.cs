@@ -175,7 +175,7 @@ namespace AppIdentity.Web.Controllers
         public async Task<IActionResult> Logout(LogoutInputModel model)
         {
             // build a model so the logged out page knows what to display
-            var vm = await _accountService.BuildLoggedOutViewModelAsync(model.LogoutId);
+            var vm = await _accountService.BuildLoggedOutViewModelAsync(model.LogoutId, HttpContext);
 
             if (User?.Identity.IsAuthenticated == true)
             {
